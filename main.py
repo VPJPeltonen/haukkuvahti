@@ -11,13 +11,13 @@ GPIO.setup(channel, GPIO.IN)
 
 def callback(channel):
         data = {}
-        date['time'] = datetime.datetime.now()
+        data['time'] = datetime.datetime.now()
         if GPIO.input(channel):
                 data['volume'] = "Loud Sound Detected!"
         else:
                 data['volume'] = "Sound Detected!"
         data['direction'] = direct.tempdirection()        
-        json_data = json.dumps(data)
+        json_data = json.dumps(data, indent=4, sort_keys=True, default=str)
         print(json_data)
 
 GPIO.add_event_detect(channel, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
