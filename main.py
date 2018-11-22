@@ -13,9 +13,9 @@ def callback(channel):
         data = {}
         data['time'] = datetime.datetime.now()
         if GPIO.input(channel):
-                data['volume'] = "Loud Sound Detected!"
+                data['volume'] = "Loud Sound"
         else:
-                data['volume'] = "Sound Detected!"
+                data['volume'] = "Sound"
         data['direction'] = direct.tempdirection()        
         json_data = json.dumps(data, indent=4, sort_keys=True, default=str)
         print(json_data)
