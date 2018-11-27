@@ -3,6 +3,7 @@ import time
 import datetime
 import json
 import sound_direction as direct
+import database_code
 
 #GPIO SETUP
 channel = 4
