@@ -3,8 +3,8 @@ import mysql.connector
 def add_bark(sql_values):
   mydb = mysql.connector.connect(
     host="localhost",
-    user="root",
-    passwd="root66",
+    user="koira",
+    passwd="koira",
     database="haukku" 
   )
 
