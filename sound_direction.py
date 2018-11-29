@@ -24,6 +24,6 @@ def direction(time1,time2,time3):
             return 'sector 6'
 
 def tempdirection():
-    return 'somewhere'
+    return 1
 #test print
 #print (direction(24,23,3))
