@@ -5,7 +5,7 @@ def add_bark(sql_values):
     host="localhost",
     user="root",
     passwd="root66",
-    database="haukut" #en tiedä mikä oli databasen nimi
+    database="haukku" 
   )
 
   mycursor = mydb.cursor()
