@@ -54,7 +54,7 @@ timeC = GPIO.add_event_callback(channel_c, callback_c)  # assign function to GPI
 # infinite loop
 while True:
         time.sleep(1)
-        if timeA != 0 and timeB != 0 and timeC != 0:
+        if type(timeA) is float and type(timeB) is float and type(timeC) is float:
                 insert_data(timeA,timeB,timeC)
                 timeA = 0
                 timeB = 0

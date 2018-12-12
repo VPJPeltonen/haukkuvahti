@@ -2,7 +2,7 @@ from datetime import datetime
 
 #get times when detectors detect the sound and return sector of sound direction
 def direction(time1,time2,time3):
-    times = [int(time1), int(time2), int(time3)]
+    times = [time1, time2, time3]
     #find the first detector to detect
     first = times.index(min(times))
     #last detector to detect
