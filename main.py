@@ -32,18 +32,18 @@ def insert_data(time1,time2,time3):
         database_code.add_bark(data)      
         print(data)
 
-def callback_a():
+def callback_a(self):
         stamp = time.time()
         print('callback a')
         global timeA 
         timeA = stamp
 
-def callback_b():
+def callback_b(self):
         stamp = time.time()
         print('callback b')
         global timeB 
         timeB = stamp
-def callback_c():
+def callback_c(self):
         stamp = time.time()
         print('callback c')
         global timeC 
