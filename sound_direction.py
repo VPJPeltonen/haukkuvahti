@@ -1,5 +1,3 @@
-from datetime import datetime
-
 #get times when detectors detect the sound and return sector of sound direction
 def direction(time1,time2,time3):
     times = [time1, time2, time3]
@@ -9,23 +7,18 @@ def direction(time1,time2,time3):
     last = times.index(max(times))
     
     #check first which sensor detected and then the last one
-    if first == 0:        
-        if last == 1:
-            return '1'
+    if first == 0:        #left first
+        if last == 1:      #mid last
+            return '4'
         else:
-            return '2'
-    elif first == 1:
-        if last == 2:
-            return '3'
-        else:
-            return '4'   
-    else:
-        if last == 0:
             return '5'
-        else:
+    elif first == 1:       #center first
+        if last == 2:      #rigt last
             return '6'
-            
-def tempdirection():
-    return 1
-#test print
-#print (direction(24,23,3))
+        else:
+            return '1'   
+    else:                   #right first
+        if last == 0:       #left last
+            return '2'
+        else:
+            return '3'
