@@ -27,39 +27,24 @@ def insert_data(time1,time2,time3):
         database_code.add_bark(data)      
         print(data)
 
-def callback_a(channel):
-        timeA = time.time()
-        print(timeA)
-        return timeA
-
 def callback():
         stamp = time.time()
         return stamp
 
-def callback_b(channel):
-        timeB = time.time()
-        print('b noise')
-        return timeB
-
-def callback_c(channel):
-        timeC = time.time()
-        print('c noise')
-        return timeC
-
-def check(pin):
+def check():
         return True
 
-#GPIO.add_event_detect(channel_a, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
-#GPIO.add_event_detect(channel_b, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
-#GPIO.add_event_detect(channel_c, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
+GPIO.add_event_detect(channel_a, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
+GPIO.add_event_detect(channel_b, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
+GPIO.add_event_detect(channel_c, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
 
-timeA = GPIO.add_event_callback(channel_a, callback_a)  # assign function to GPIO PIN, Run function on change
+timeA = GPIO.add_event_callback(channel_a, callback)  # assign function to GPIO PIN, Run function on change
 a_checked = GPIO.add_event_callback(channel_a, check)  # assign function to GPIO PIN, Run function on change
 
-timeB = GPIO.add_event_callback(channel_b, callback_b)  # assign function to GPIO PIN, Run function on change
+timeB = GPIO.add_event_callback(channel_b, callback)  # assign function to GPIO PIN, Run function on change
 b_checked = GPIO.add_event_callback(channel_b, check)  # assign function to GPIO PIN, Run function on change
 
-timeC = GPIO.add_event_callback(channel_c, callback_c)  # assign function to GPIO PIN, Run function on change
+timeC = GPIO.add_event_callback(channel_c,)  # assign function to GPIO PIN, Run function on change
 c_checked = GPIO.add_event_callback(channel_c, check)  # assign function to GPIO PIN, Run function on change
 
 # infinite loop
