@@ -32,32 +32,32 @@ def insert_data(time1,time2,time3):
         database_code.add_bark(data)      
         print(data)
 
-def callback(sensor):
+def callback_a():
         stamp = time.time()
-        print('callback')
-        if sensor == 'a':
-                global timeA 
-                timeA = stamp
-        elif sensor == 'b':
-                global timeB 
-                timeB = stamp
-        else: 
-                global timeC 
-                timeC = stamp
+        print('callback a')
+        global timeA 
+        timeA = stamp
 
-def check(self):
-        print('check')
-        return True
+def callback_b():
+        stamp = time.time()
+        print('callback b')
+        global timeB 
+        timeB = stamp
+def callback_c():
+        stamp = time.time()
+        print('callback c')
+        global timeC 
+        timeC = stamp
 
 GPIO.add_event_detect(channel_a, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
 GPIO.add_event_detect(channel_b, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
 GPIO.add_event_detect(channel_c, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
 
-GPIO.add_event_callback(channel_a, callback('a'))  # assign function to GPIO PIN, Run function on change
+GPIO.add_event_callback(channel_a, callback_a)  # assign function to GPIO PIN, Run function on change
 
-GPIO.add_event_callback(channel_b, callback('b'))  # assign function to GPIO PIN, Run function on change
+GPIO.add_event_callback(channel_b, callback_b)  # assign function to GPIO PIN, Run function on change
 
-GPIO.add_event_callback(channel_c,callback('c'))  # assign function to GPIO PIN, Run function on change
+GPIO.add_event_callback(channel_c,callback_c)  # assign function to GPIO PIN, Run function on change
 
 # infinite loop
 while True:
