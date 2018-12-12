@@ -44,7 +44,7 @@ a_checked = GPIO.add_event_callback(channel_a, check)  # assign function to GPIO
 timeB = GPIO.add_event_callback(channel_b, callback)  # assign function to GPIO PIN, Run function on change
 b_checked = GPIO.add_event_callback(channel_b, check)  # assign function to GPIO PIN, Run function on change
 
-timeC = GPIO.add_event_callback(channel_c,)  # assign function to GPIO PIN, Run function on change
+timeC = GPIO.add_event_callback(channel_c,callback)  # assign function to GPIO PIN, Run function on change
 c_checked = GPIO.add_event_callback(channel_c, check)  # assign function to GPIO PIN, Run function on change
 
 # infinite loop
