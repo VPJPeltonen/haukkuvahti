@@ -19,6 +19,11 @@ timeA = 0
 timeB = 0
 timeC = 0
 
+#checked stuff
+a_check = False
+b_check = False
+c_check = False
+
 def insert_data(time1,time2,time3):
         time = datetime.datetime.now()
         #direction = direct.tempdirection() 
@@ -27,10 +32,18 @@ def insert_data(time1,time2,time3):
         database_code.add_bark(data)      
         print(data)
 
-def callback(self):
+def callback(sensor):
         stamp = time.time()
         print('callback')
-        return stamp
+        if sensor == 'a':
+                global timeA 
+                timeA = stamp
+        elif sensor == 'b':
+                global timeB 
+                timeB = stamp
+        else: 
+                global timeC 
+                timeC = stamp
 
 def check(self):
         print('check')
@@ -40,16 +53,18 @@ GPIO.add_event_detect(channel_a, GPIO.BOTH, bouncetime=300)  # let us know when 
 GPIO.add_event_detect(channel_b, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
 GPIO.add_event_detect(channel_c, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
 
-timeA = GPIO.add_event_callback(channel_a, callback)  # assign function to GPIO PIN, Run function on change
-a_checked = GPIO.add_event_callback(channel_a, check)  # assign function to GPIO PIN, Run function on change
+GPIO.add_event_callback(channel_a, callback('a'))  # assign function to GPIO PIN, Run function on change
 
-timeB = GPIO.add_event_callback(channel_b, callback)  # assign function to GPIO PIN, Run function on change
-b_checked = GPIO.add_event_callback(channel_b, check)  # assign function to GPIO PIN, Run function on change
+GPIO.add_event_callback(channel_b, callback('b'))  # assign function to GPIO PIN, Run function on change
 
-timeC = GPIO.add_event_callback(channel_c,callback)  # assign function to GPIO PIN, Run function on change
-c_checked = GPIO.add_event_callback(channel_c, check)  # assign function to GPIO PIN, Run function on change
+GPIO.add_event_callback(channel_c,callback('c'))  # assign function to GPIO PIN, Run function on change
 
 # infinite loop
 while True:
         time.sleep(1)
+        if timeA != 0 and timeB != 0 and timeC != 0:
+                insert_data(timeA,timeB,timeC)
+                timeA = 0
+                timeB = 0
+                timeC = 0
         print ('test')
