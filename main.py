@@ -67,6 +67,7 @@ while True:
         time.sleep(1)
         if a_checked and b_checked and c_checked:
                 insert_data(timeA,timeB,timeC)
+                print ('test')
                 a_checked = False
                 b_checked = False
                 c_checked = False
