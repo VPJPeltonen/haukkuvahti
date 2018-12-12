@@ -27,11 +27,11 @@ def insert_data(time1,time2,time3):
         database_code.add_bark(data)      
         print(data)
 
-def callback():
+def callback(self):
         stamp = time.time()
         return stamp
 
-def check():
+def check(self):
         return True
 
 GPIO.add_event_detect(channel_a, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
