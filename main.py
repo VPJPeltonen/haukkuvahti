@@ -29,9 +29,11 @@ def insert_data(time1,time2,time3):
 
 def callback(self):
         stamp = time.time()
+        print('callback')
         return stamp
 
 def check(self):
+        print('check')
         return True
 
 GPIO.add_event_detect(channel_a, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
