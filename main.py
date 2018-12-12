@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 import datetime
-import json
+#import json
 import sound_direction as direct
 import database_code
 
@@ -52,9 +52,4 @@ c_checked = GPIO.add_event_callback(channel_c, check)  # assign function to GPIO
 # infinite loop
 while True:
         time.sleep(1)
-        if a_checked and b_checked and c_checked:
-                insert_data(timeA,timeB,timeC)
-                print ('test')
-                a_checked = False
-                b_checked = False
-                c_checked = False
+        print ('test')
