@@ -19,10 +19,10 @@ timeA = 0
 timeB = 0
 timeC = 0
 
-def insert_data():
+def insert_data(time1,time2,time3):
         time = datetime.datetime.now()
-        direction = direct.tempdirection() 
-        #direction = direct.direction(timeA,timeB,timeC)
+        #direction = direct.tempdirection() 
+        direction = direct.direction(time1,time2,time3)
         data = [time,direction] 
         database_code.add_bark(data)      
         print(data)
@@ -55,7 +55,10 @@ timeC = GPIO.add_event_callback(channel_c, callback_c)  # assign function to GPI
 while True:
         time.sleep(1)
         if timeA != 0 and timeB != 0 and timeC != 0:
-                print ('works sort of')
+                insert_data(timeA,timeB,timeC)
                 timeA = 0
                 timeB = 0
                 timeC = 0
+                timeA = GPIO.add_event_callback(channel_a, callback_a)  # assign function to GPIO PIN, Run function on change
+                timeB = GPIO.add_event_callback(channel_b, callback_b)  # assign function to GPIO PIN, Run function on change
+                timeC = GPIO.add_event_callback(channel_c, callback_c)  # assign function to GPIO PIN, Run function on change   
