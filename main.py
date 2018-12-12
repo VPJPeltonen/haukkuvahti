@@ -14,31 +14,29 @@ GPIO.setup(channel_a, GPIO.IN)
 GPIO.setup(channel_b, GPIO.IN)
 GPIO.setup(channel_c, GPIO.IN)
 
-def oldcallback(channel):
-        data = {}
-        data['time'] = datetime.datetime.now()
-        if GPIO.input(channel):
-                data['volume'] = "Loud Sound"
-        else:
-                data['volume'] = "Sound"
-        data['direction'] = direct.tempdirection()        
-        json_data = json.dumps(data, indent=4, sort_keys=True, default=str)
-        print(json_data)
+#times stuff
+timeA = 0
+timeB = 0
+timeC = 0
 
-def callback(channel):
+def insert_data():
         time = datetime.datetime.now()
         direction = direct.tempdirection() 
+        #direction = direct.direction(timeA,timeB,timeC)
         data = [time,direction] 
         database_code.add_bark(data)      
         print(data)
 
 def callback_a(channel):
+        timeA = datetime.datetime.now()
         print('a noise')
 
 def callback_b(channel):
+        timeB = datetime.datetime.now()
         print('b noise')
 
 def callback_c(channel):
+        timeC = datetime.datetime.now()
         print('c noise')
 
 GPIO.add_event_detect(channel_a, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
@@ -51,3 +49,8 @@ GPIO.add_event_callback(channel_c, callback_c)  # assign function to GPIO PIN, R
 # infinite loop
 while True:
         time.sleep(1)
+        if timeA != 0 and timeB != 0 and timeC != 0:
+                print ('works sort of')
+                timeA = 0
+                timeB = 0
+                timeC = 0
