@@ -53,7 +53,7 @@ GPIO.add_event_detect(channel_a, GPIO.BOTH, bouncetime=300)  # let us know when 
 GPIO.add_event_detect(channel_b, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
 GPIO.add_event_detect(channel_c, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
 
-timeA = GPIO.add_event_callback(channel_a, callback)  # assign function to GPIO PIN, Run function on change
+timeA = GPIO.add_event_callback(channel_a, callback_a)  # assign function to GPIO PIN, Run function on change
 a_checked = GPIO.add_event_callback(channel_a, check)  # assign function to GPIO PIN, Run function on change
 
 timeB = GPIO.add_event_callback(channel_b, callback_b)  # assign function to GPIO PIN, Run function on change
