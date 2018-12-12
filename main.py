@@ -28,18 +28,18 @@ def insert_data(time1,time2,time3):
         print(data)
 
 def callback_a(channel):
-        timeA = datetime.datetime.now()
+        timeA = time.time()
         print('a noise')
         return timeA
 
 
 def callback_b(channel):
-        timeB = datetime.datetime.now()
+        timeB = time.time()
         print('b noise')
         return timeB
 
 def callback_c(channel):
-        timeC = datetime.datetime.now()
+        timeC = time.time()
         print('c noise')
         return timeC
 
