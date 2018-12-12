@@ -30,21 +30,26 @@ def insert_data():
 def callback_a(channel):
         timeA = datetime.datetime.now()
         print('a noise')
+        return timeA
+
 
 def callback_b(channel):
         timeB = datetime.datetime.now()
         print('b noise')
+        return timeB
 
 def callback_c(channel):
         timeC = datetime.datetime.now()
         print('c noise')
+        return timeC
+
 
 GPIO.add_event_detect(channel_a, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
 GPIO.add_event_detect(channel_b, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
 GPIO.add_event_detect(channel_c, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
-GPIO.add_event_callback(channel_a, callback_a)  # assign function to GPIO PIN, Run function on change
-GPIO.add_event_callback(channel_b, callback_b)  # assign function to GPIO PIN, Run function on change
-GPIO.add_event_callback(channel_c, callback_c)  # assign function to GPIO PIN, Run function on change
+timeA = GPIO.add_event_callback(channel_a, callback_a)  # assign function to GPIO PIN, Run function on change
+timeB = GPIO.add_event_callback(channel_b, callback_b)  # assign function to GPIO PIN, Run function on change
+timeC = GPIO.add_event_callback(channel_c, callback_c)  # assign function to GPIO PIN, Run function on change
 
 # infinite loop
 while True:
