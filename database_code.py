@@ -5,12 +5,12 @@ def add_bark(sql_values):
     host="localhost",
     user="koira",
     passwd="koira",
-    database="haukku" 
+    database="homestead" 
   )
 
   mycursor = mydb.cursor()
 
-  sql = "INSERT INTO barks (bark, sector) VALUES (%s, %s)"
+  sql = "INSERT INTO barks (id, bark, sector) VALUES (1, %s, %s)"
   val = sql_values
   mycursor.execute(sql, val)
 
